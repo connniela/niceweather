@@ -81,9 +81,26 @@ struct SidebarView: View {
                     }
                     .scrollContentBackground(.hidden)
                     .listStyle(PlainListStyle())
+                    
+                    Text(viewModel.versionText())
+                        .foregroundStyle(.secondary)
+                    
+                    Label {
+                        Text("Connie")
+                            .font(.system(.subheadline, design: .rounded))
+                            .foregroundStyle(.secondary)
+                    } icon: {
+                        Image("connie")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20, height: 20)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.secondary, lineWidth: 1))
+                    }
                 }
                 .padding(.top, 80)
                 .padding(.horizontal, 40)
+                .padding(.bottom, (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.safeAreaInsets.bottom)
             }
             .frame(width: sideBarWidth)
             .offset(x: isShowing ? 0 : -sideBarWidth)

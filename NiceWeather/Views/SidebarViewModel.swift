@@ -37,6 +37,12 @@ class SidebarViewModel: ObservableObject {
                 .assign(to: &$myDirects)
         }
     }
+    
+    func versionText() -> String {
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
+        return String(format: "Version %@.%@", version ?? "", build ?? "")
+    }
 }
 
 extension UserDefaults {
